@@ -1,10 +1,21 @@
-import requests, os, time
-from colorama import Fore
+import os
+import requests
+from TextColor import ColorText
 
-os.system('title WebHook Deleter Author: clayze#9999')
 
-webhook = input("Enter webhook url -> ")
+os.system("title WebHook deleter Author: clayze#9999")
 
-requests.delete(webhook)
-print('webhook deleted')
-time.sleep(10)
+
+def Webhook():
+    webhook_link = input("Insert webhook url: ")
+
+    response = requests.delete(webhook_link)
+
+    if response.status_code >= 200 or response <= 299:
+        print(ColorText.green + "Success" + ColorText.reset)
+    else:
+        print(ColorText.red + "Error" + ColorText.reset)
+
+
+if __name__ == "__main__":
+    Webhook()
